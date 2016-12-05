@@ -15,11 +15,9 @@
  *= require font-awesome
  *= require logo
  *= require password
+ *= require bootstrap
  *= require js_password
  */
-@import "bootstrap";
-@import "font-awesome";
-
 .navbar {
   margin-bottom: 40px;
 }
