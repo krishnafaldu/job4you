@@ -15,7 +15,6 @@
  *= require font-awesome
  *= require logo
  *= require password
- *= require bootstrap
  *= require js_password
  */
 .navbar {
