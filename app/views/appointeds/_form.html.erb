@@ -1,0 +1,45 @@
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <div class="col-sm-12 well">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <h3><b>Name :</b> <%=@job_seeker.first_name %> <%=@job_seeker.last_name %></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Qualification :</b> <%=@job_seeker.qualification %></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <h5><b>Experience (In year) :</b> <%=@job_seeker.experience %> </h5>
+        </div> 
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>City : </b><%=@job_seeker.city %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Key Skills : </b><%=@job_seeker.key_skills %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <%= form_for(@appointed) do |f| %>
+          <%= f.hidden_field :job_seeker_id %>
+          <%= f.hidden_field :recruiter_id, value: current_recruiter.id %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <%= f.submit class: "btn btn-info" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

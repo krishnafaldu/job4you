@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <div class="col-sm-12 well">
+      <div class="row">
+        <div class="col-sm-10 form-group">
+          <h3><b>Profile Pic : <br></b><%= image_tag @recruiter.image.url %></h3> 
+        </div>
+        <div class="col-sm-2 form-group" align="right">
+            <a href="<%= edit_recruiter_registration_path(@recruiter)%>"><span class="fa fa-pencil-square-o">Edit profile</span></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+        <h3><b>Name : </b><%=@recruiter.first_name %> <%=@recruiter.last_name %></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Phone Number : </b><%=@recruiter.contact %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Email : </b><%=@recruiter.email %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>City : </b><%=@recruiter.city %> </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

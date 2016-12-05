@@ -1,0 +1,88 @@
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <div class="col-sm-12 well">
+      <div class="row">
+        <div class="col-sm-10 form-group">
+        <h3><b>Job Title : </b><%=@job_ad.title %></h3>
+        </div>
+        <%if current_recruiter %>
+          <div class="col-sm-2 form-group" align="right">
+            <span class="fa fa-pencil-square-o"></span>
+            <%= link_to 'Edit job_ad', '#new_person_modal', 'data-toggle' => 'modal' , locals: {f: @job_ad} %>
+          </div>
+        <%end%>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Company Name :</b> <%=@job_ad.industry %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Require Experience :</b> <%=@job_ad.req_experience %></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <h5><b>City : </b><%=@job_ad.city %> </h5>
+        </div> 
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Key Skills : </b><%=@job_ad.key_skills %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Company Owner : </b><%=@job_ad.owner_name %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Email : </b><%=@job_ad.email %> </h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <h5><b>Job Details : </b><%=@job_ad.job_details %> </h5>
+        </div>
+      </div>
+      <%if current_job_seeker %>
+        <%=link_to 'Apply Now', new_job_seekers_job_application_path(j_id: @job_ad), class: "btn btn-lg btn-info"%>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="new_person_modal"
+   tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <%# Render the new person form (passing modal => true to enable remote => true) %>
+        <%= render 'edit', modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+
+</script>
+<style type="text/css">
+  @media (min-width: 768px) {
+  .modal-xl {
+    width: 95%;
+   max-width:1200px;
+  }
+}
+
+</style>

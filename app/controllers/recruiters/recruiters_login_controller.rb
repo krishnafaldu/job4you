@@ -1,0 +1,2 @@
+class Recruiters::RecruitersLoginController < ApplicationController
+end

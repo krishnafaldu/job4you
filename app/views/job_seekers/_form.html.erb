@@ -1,0 +1,118 @@
+
+<div class="container" style="margin-top: 50px">
+  <h3>New Job Seeker</h3>
+  <h1 class="well">Registration Form</h1>
+  <div class="col-lg-12 well">
+    <div class="row">
+      <%= form_for(@job_seeker) do |f| %>
+        <% if @job_seeker.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@job_seeker.errors.count, "error") %> prohibited this job_seeker from being saved:</h2>
+
+            <ul>
+            <% @job_seeker.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+            <%= f.label :First_Name %>
+            <%=f.text_field :first_name , placeholder: "first name", class: "form-control" %>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Last_Name %>
+              <%=f.text_field :last_name , placeholder: "last name ", class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <%= f.label :Email %>
+              <%=f.text_field :email , placeholder: "abc@xyz.com", class: "form-control"%>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Password %>
+              <%=f.password_field :password , placeholder: "password", class: "form-control"%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <%= f.label :Contact %>
+              <%=f.text_field :contact , placeholder: "contact number", class: "form-control"%>
+            </div> 
+            <div class="col-sm-6 form-group">
+              <%= f.label :City %>
+              <%=f.text_field :city , class: "form-control"%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <%= f.label :Gender %>
+              <%= f.radio_button :gender, "M", :checked => true %> Male
+              <%= f.radio_button :gender, "F" %> Female
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Image %>
+              <%= f.file_field :image%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <%= f.label :Qualification %>
+              <%=f.text_field :qualification , class: "form-control"%>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Key_Skills %>
+              <%= f.text_field :key_skills , class: "form-control"%>
+            </div>
+            <div class="col-sm-6 form-group" >
+              <%= f.label :Experience %>
+              <%= f.radio_button :autolyse, false, :checked => true , id:"show"%> Yes
+              <%= f.radio_button :autolyse, false, :checked => true , id: "hid"%> No
+            </div>
+          </div>
+          <div class="row" id="hide">
+            <div class="col-sm-6 form-group" >
+              <%= f.label :Industry_Type %>
+              <%=f.text_field :industry , class: "form-control"%>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Function %>
+              <%=f.text_field :function, class: "form-control" %>
+            </div>
+            <div class="col-sm-6 form-group" >
+              <%= f.label :experience  %>
+             <%=f.text_field :experience, class: "form-control", placeholder: "Experience in Year"%>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <%= f.label :Resume %>* :
+              <%=f.file_field :resume , class: "form-control"%>
+            </div>
+          </div>
+          <div class="actions" class="btn btn-lg btn-info">
+            <%= f.submit %>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+    $("#hide").hide();
+    $("#show").click(function(){
+      $("#hide").show();
+    });
+});
+$(function(){
+    $("#hid").click(function(){
+      $("#hide").hide();
+    });
+});
+
+</script>

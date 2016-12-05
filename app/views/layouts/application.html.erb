@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>job4you</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script href="stylesheets/logo.css"></script>
+  </head>
+  <body style="margin-top: 60px">
+    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%if current_job_seeker%>
+            <a href="<%= job_seekers_job_ads_path%>"><img src="/job4u.png" class="logo"></a>
+          <%else%>
+            <a href="<%= recruiters_job_seekers_path%>"><img src="/job4u.png" class="logo"></a>
+          <%end%>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <% if current_job_seeker %>
+              <li><a href="<%=job_seekers_job_ads_path%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:15px">Job Ads</span></a></li>
+              <li>
+                <%=form_tag(job_seekers_job_ads_path, method: "get", class: "navbar-form") do %>
+                  <div class="input-group">
+                    <%=text_field_tag "search" , nil, class: "form-control",placeholder: "Job Title, Keywords" %>
+                    <div class="input-group-btn">
+                      <button class="btn btn-warning" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                  </div>
+                <%end%>
+              </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Welcome <%= current_job_seeker.first_name%>&nbsp; <img src="<%= current_job_seeker.image.url %>" class="proofilepic"> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= job_seekers_job_seeker_path(current_job_seeker.id) %>"><span class="fa fa-user fa-fw"></span>&nbsp;Profile</a></li>
+                <li><a href="<%=job_seekers_job_applications_path%>"><span class="fa fa-briefcase fa-fw"></span>&nbsp;Applied Jobs</a></li>
+                <li>
+                  <a href= "<%= destroy_job_seeker_session_path%>" , data-method="delete"><span class="fa fa-power-off fa-fw"></span> Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <% elsif current_recruiter %>
+              <li ><a href="<%= recruiters_job_seekers_path %>">Job Seekers</a></li>
+              <li>
+                <%=form_tag(recruiters_job_seekers_path, method: "get", class: "navbar-form") do %>
+                  <div class="input-group">
+                    <%=text_field_tag "search" , nil, class: "form-control",placeholder: "City, Qualification, etc." %>
+                    <div class="input-group-btn">
+                      <button class="btn btn-warning" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                  </div>
+                <%end%>
+              </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+              <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+                <a href="#">see all</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="<%=job_seekers_job_seekers_path %>">Welcome <%=current_recruiter.first_name%>&nbsp;<img src="<%= current_recruiter.image.url %>" class="proofilepic"> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="<%= recruiters_recruiter_path(current_recruiter.id)%>"><span class="fa fa-user fa-fw"></span>&nbsp;Profile
+                  </a>
+                </li>
+                <li >
+                  <a href="<%= recruiters_job_ads_path %>"><span class="fa fa-buysellads fa-fw"></span>&nbsp;Job Ads</a>
+                </li>
+                <li>
+                  <a href="<%= recruiters_job_applications_path%>" ><span class="fa fa-envelope fa-fw" ></span>&nbsp;Applications
+                  </a>
+                </li>
+                <li><a href="<%= recruiters_appointeds_path%>"><span class="fa fa-users fa-fw"></span>&nbsp;Recruited Candidates</a></li>
+                <li>
+                  <a href= "<%=  destroy_recruiter_session_path%>" , data-method="delete"><span class="fa fa-power-off fa-fw"></span> Logout
+                  </a>
+                </li>
+                </li>
+              </ul>
+            </li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <%= yield %>
+  </body>
+</html>

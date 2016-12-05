@@ -1,0 +1,85 @@
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <% if current_job_seeker %>
+      <% a = JobApplication.where(job_seeker_id: current_job_seeker.id)
+      %>
+      <% a.each do |job_application| %>
+        <a href= "<%=job_seekers_job_application_path(job_application)%>">
+          <div class="col-sm-12 well">
+            <div class="row">
+              <div class="col-sm-12 form-group">
+              <h3><b>Job Title :</b> <%=job_application.job_ad.title %></h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>Company Name :</b> <%=job_application.job_ad.industry %></h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <h5><b>Require Experience :</b> <%=job_application.job_ad.req_experience %> </h5>
+              </div> 
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>City : </b><%=job_application.job_ad.city %> </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>Key Skills : </b><%=job_application.job_ad.key_skills %> </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <%= link_to 'Destroy', job_application, method: :delete, class: "btn btn-danger",data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+          </div>
+        </a>
+      <%end%>
+    
+    <%elsif current_recruiter %>
+      <% b = JobApplication.where(recruiter_id: current_recruiter.id)
+      %>
+      <% b.each do |job_application| %>
+        <a href= "<%= recruiters_job_application_path(job_application)%>">
+          <div class="col-sm-12 well">
+            <div class="row">
+              <div class="col-sm-12 form-group">
+              <h3><b>Job Title :</b> <%=job_application.job_ad.title %></h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>Company Name :</b> <%=job_application.job_ad.industry %></h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <h5><b>Require Experience :</b> <%=job_application.job_ad.req_experience %> </h5>
+              </div> 
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>City : </b><%=job_application.job_ad.city %> </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>Key Skills : </b><%=job_application.job_ad.key_skills %> </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <%= link_to 'Destroy', recruiters_job_application_path(job_application), method: :delete, class: "btn btn-danger",data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+          </div>
+        </a>
+      <%end%>
+    <%end%>
+  </div>
+</div>
+<script href="stylesheets/anchor.css"></script>

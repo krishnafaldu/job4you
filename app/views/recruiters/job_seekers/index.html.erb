@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <% @job_seekers.each do |job_seeker| %>
+      <a href= "<%=recruiters_job_seeker_path(job_seeker)%>">
+        <div class="col-sm-12 well">
+          <div class="row">
+            <div class="col-sm-12 form-group">
+            <h3><b>Name :</b> <%=job_seeker.first_name %> <%=job_seeker.last_name %></h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+             <h5><b>Qualification :</b> <%=job_seeker.qualification %></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <h5><b>Experience (In year) :</b> <%=job_seeker.experience %> </h5>
+            </div> 
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+             <h5><b>City : </b><%=job_seeker.city %> </h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+             <h5><b>Key Skills : </b><%=job_seeker.key_skills %> </h5>
+            </div>
+          </div>
+            <%=link_to 'Recruite', new_recruiters_appointed_path(js_id: job_seeker), class: "btn btn-lg btn-info"%>
+        </div>
+      </a>
+    <%end%>
+  </div>
+</div>
+<center><%= paginate @job_seekers %></center>
+<script href="stylesheets/anchor.css"></script>

@@ -1,0 +1,71 @@
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <div class="col-sm-12 well">
+       <div class="row">
+        <div class="col-sm-12 form-group">
+        <h3><b>Job Title : </b><%= @job_application.job_ad.try(:title) %></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Industry :</b> <%= @job_application.job_ad.try(:industry) %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Require Experience :</b> <%= @job_application.job_ad.try(:req_experience) %></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <h5><b>City : </b><%= @job_application.job_ad.try(:city) %> </h5>
+        </div> 
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Key Skills : </b><%= @job_application.job_ad.try(:key_skills) %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Company Owner : </b><%=@job_application.job_ad.try(:owner_name) %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Email : </b><%=@job_application.job_ad.try(:email) %> </h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <h5><b>Job Details : </b><%=@job_application.job_ad.try(:job_details) %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <%= form_for(@job_application) do |f| %>
+            <% if @job_application.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@job_application.errors.count, "error") %> prohibited this job_application from being saved:</h2>
+
+                <ul>
+                <% @job_application.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <%= f.label :Resume%><b>* : </b>
+            <%= f.file_field :resume%><br/>
+            <%= f.hidden_field :job_ad_id %>
+            <%= f.hidden_field :recruiter_id , value: @job_application.job_ad.recruiter_id  %>
+            <%= f.hidden_field :job_seeker_id, value: current_job_seeker.id%>
+            
+            <%= f.submit class: "btn btn-info" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

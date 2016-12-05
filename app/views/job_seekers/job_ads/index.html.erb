@@ -1,0 +1,78 @@
+<% if current_recruiter %>
+  <div class="btn btn-default">
+    <%= link_to 'New Job ad', new_recruiters_job_ad_path %>
+  </div>
+<%end%>
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+  <%if current_recruiter %>
+    <% a = JobAd.where(recruiter_id: current_recruiter.id)%>
+      <% a.each do |job_ad| %>
+        <a href= "<%=recruiters_job_ad_path(job_ad)%>">
+          <div class="col-sm-12 well">
+            <div class="row">
+              <div class="col-sm-10 form-group">
+                <h3><b>Job Title :</b> <%=job_ad.title %></h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>Company Name :</b> <%=job_ad.industry %></h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <h5><b>Require Experience :</b> <%=job_ad.req_experience %> </h5>
+              </div> 
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>City : </b><%=job_ad.city %> </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>Key Skills : </b><%=job_ad.key_skills %> </h5>
+              </div>
+            </div>
+          </div>
+        </a>
+    <%end%>
+  <%else%> 
+    <% @job_ads.each do |job_ad| %>
+      <a href= "<%= job_seekers_job_ad_path(job_ad)%>">
+        <div class="col-sm-12 well">
+          <div class="row">
+            <div class="col-sm-12 form-group">
+            <h3><b>Job Title :</b> <%=job_ad.title %></h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+             <h5><b>Company Name :</b> <%=job_ad.industry %></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <h5><b>Require Experience :</b> <%=job_ad.req_experience %> </h5>
+            </div> 
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+             <h5><b>City : </b><%=job_ad.city %> </h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+             <h5><b>Key Skills : </b><%=job_ad.key_skills %> </h5>
+            </div>
+          </div>
+            <%=link_to 'Apply Now', new_job_seekers_job_application_path(j_id: job_ad), class: "btn btn-lg btn-info"%>
+        </div>
+      </a>
+    <%end%>
+  <%end%>
+  </div>
+</div>
+<center><%= paginate @job_ads %></center>
+<script href="stylesheets/anchor.css"></script>

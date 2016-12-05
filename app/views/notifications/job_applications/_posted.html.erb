@@ -1,0 +1,5 @@
+<%= link_to recruiters_job_applications_path(notification.notifiable.job_ad, anchor: dom_id(notification.notifiable)), class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
+  <%= notification.actor.first_name %>
+  <%= notification.action %>
+  a <%= notification.notifiable_type.underscore.humanize.downcase %>
+<% end %>

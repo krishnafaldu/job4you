@@ -1,0 +1,41 @@
+<div class="dbody">
+  <body background="bg.jpg">
+    <div class="wraper" style="margin-top: 50px">
+      <div class="row">
+        <div class="col-sm-12 well">
+          <div class="row">
+            <a href= "<%= new_job_seeker_registration_path%>">
+              <div class="col-sm-5 form-group">
+                <h3>Register as Job Seeker</h3>
+              </div>
+            </a>
+              <div class="col-sm-2 form-group">
+                <h3>or</h3>
+              </div>
+            <a href= "<%= new_job_seeker_session_path%>">
+              <div class="col-sm-5 form-group">
+                <h3><span class="login">Login</span> </h3>
+              </div>
+            </a>
+          </div>
+          <div class="row">
+            <a href= "<%= new_recruiter_registration_path %>">
+              <div class="col-sm-5 form-group">
+                <h3>Register as Recruiter</h3>
+              </div>
+            </a>
+              <div class="col-sm-2 form-group">
+                <h3>or</h3>
+              </div>
+            <a href= "<%=new_recruiter_session_path%>">
+              <div class="col-sm-5 form-group">
+                <h3>Login</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script href="stylesheets/anchor.css"></script>
+  </body>
+</div>

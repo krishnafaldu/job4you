@@ -1,0 +1,42 @@
+
+.logo{
+  height: 50px;
+  width: 170px;
+}
+body{
+  background-size: 1366px 768px
+}
+.wraper{
+  padding-top: 15%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: auto;
+}
+.proofilepic{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+
+/* css for map*/
+
+#map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px
+}
+#panel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}
+.mendotory
+{
+  color: red;
+}

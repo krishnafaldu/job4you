@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Recruiters</h1>
+
+<table border="1" class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th >first name</th>
+      <th>last name</th>
+      <th>contact</th>
+      <th>email</th>
+      <th>Image</th>
+      <th>Location</th>
+      <th colspan="3">Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recruiters.each do |recruiter| %>
+      <tr>
+        <td><%= recruiter.id %> </td>
+        <td><%= recruiter.first_name %> </td>
+        <td><%= recruiter.last_name %> </td>
+        <td><%= recruiter.contact%> </td>
+        <td><%= recruiter.email %> </td>
+        <td><%= recruiter.image %> </td>
+        <td><%= recruiter.city %> </td>
+
+        <td><%= link_to 'Show', recruiters_recruiter_path(recruiter)%></td>
+        <td><%= link_to 'edit', edit_recruiters_recruiter_path(recruiter)%></td>
+        <td><%= link_to 'delete',recruiter, method: :delete ,data:{confirm: 'Are you sure?'} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recruiter', new_recruiters_recruiter_path %>

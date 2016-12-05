@@ -1,0 +1,43 @@
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <% a = Appointed.where(recruiter_id: current_recruiter.id)
+    %>
+    <% a.each do |appointed| %>
+        <a href= "<%=recruiters_appointed_path(appointed)%>">
+          <div class="col-sm-12 well">
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <h3><b>Name :</b> <%= appointed.job_seeker.first_name %> <%= appointed.job_seeker.last_name %></h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>Qualification :</b> <%=appointed.job_seeker.qualification %></h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <h5><b>Experience (In year) :</b> <%= appointed.job_seeker.experience %> </h5>
+              </div> 
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>City : </b><%= appointed.job_seeker.city %> </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group">
+               <h5><b>Key Skills : </b><%= appointed.job_seeker.key_skills %> </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 form-group" >
+                <%= link_to 'Destroy', recruiters_appointed_path(appointed), method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger' %>
+              </div>
+            </div>
+          </div>
+        </a>
+    <%end%>
+  </div>
+</div>
+<script href="stylesheets/anchor.css"></script>

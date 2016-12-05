@@ -1,0 +1,66 @@
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <div class="col-sm-12 well">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+        <h3><b>Name : </b><%=@appointed.job_seeker.first_name %> <%=@appointed.job_seeker.last_name %></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Gender :</b> <%=@appointed.job_seeker.gender %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Qualification :</b> <%=@appointed.job_seeker.qualification %></h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <h5><b>Experience (In year) : </b><%=@appointed.job_seeker.experience %> </h5>
+        </div> 
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Indusrty : </b><%=@appointed.job_seeker.industry %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Function :</b> <%=@appointed.job_seeker.function %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Key Skills : </b><%=@appointed.job_seeker.key_skills %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Phone Number : </b><%=@appointed.job_seeker.contact %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>Email : </b><%=@appointed.job_seeker.email %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b>City : </b><%=@appointed.job_seeker.city %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <h5><b> Resume : </b><%= link_to "Download Resume", @appointed.job_seeker.resume_url %> </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+         <%= link_to 'Back', recruiters_appointeds_path , class: "btn btn-default"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

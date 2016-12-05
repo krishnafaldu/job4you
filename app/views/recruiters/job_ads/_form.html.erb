@@ -1,0 +1,79 @@
+<div class="container">
+  <%if @job_ad.new_record? %>
+    <h1 class="well">Create New Job Ad</h1>
+  <%end%>
+  <div class="col-lg-12 well">
+    <div class="row">
+      <% modal ||= false %>
+      <% remote = modal ? true : false %>
+      <%= form_for([:recruiters, @job_ad], id: 'form-id', remote: true, html: {role: :form, 'data-model' => 'person'}) do |f| %>
+        <% if @job_ad.errors.any? %>  
+          <div id="error_explanation">
+            <h2><%= pluralize(@job_ad.errors.count, "error") %> prohibited this job_ad from being saved:</h2>
+
+            <ul>
+            <% @job_ad.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+            <%= f.label :Title %><span class="mendotory"> *</span>
+            <%=f.text_field :title , placeholder: "Title For Job", class: "form-control" %>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Key_Skills %><span class="mendotory"> *</span>
+              <%=f.text_field :key_skills , placeholder: "Required Skills", class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <%= f.label :Require_Expirience %>
+              <%=f.text_field :req_experience , placeholder: "Expireance Required", class: "form-control" %>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Industry %>
+              <%=f.text_field :industry , placeholder: "Industry Type", class: "form-control"%>
+            </div> 
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <%= f.label :Function %>
+              <%=f.text_field :function, class: "form-control" %>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :JOb_Details %>
+              <%=f.text_area :job_details , class: "form-control"%>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Owner_Name %>
+              <%=f.text_field :owner_name , class: "form-control"%>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Email %><span class="mendotory"> *</span>
+              <%=f.text_field :email , class: "form-control"%>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.label :Office_Address %><span class="mendotory"> *</span>
+              <%=f.text_field:city , class: "form-control"%>
+            </div>
+            <div class="col-sm-6 form-group">
+              <%= f.hidden_field :recruiter_id , class: "form-control" ,value: current_recruiter.id%>
+            </div>
+          </div>
+          <div class="actions" class="btn btn-lg btn-info">
+            <%= f.submit  class: "btn btn-default" ,onclick: "submitFrmAjax();"%>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function submitFrmAjax(){
+    $("#form-id").submit()
+  }
+</script>

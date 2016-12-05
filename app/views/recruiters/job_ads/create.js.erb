@@ -1,0 +1,8 @@
+
+
+<% if @job_ad.errors.any? %>
+
+  alert("ERROR(S): <%= j @job_ad.errors.full_messages.join('; ') %>")
+<% end %>
+
+
