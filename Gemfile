@@ -42,6 +42,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'activerecord-session_store'
+gem 'rails_12factor'
 
 
 # Use ActiveModel has_secure_password
